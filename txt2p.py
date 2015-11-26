@@ -1,4 +1,3 @@
-import numpy as np
 import cPickle as pickle
 from collections import deque
 
@@ -19,37 +18,37 @@ def txt2p():
         header = fr.readline()
     
     print "loading"
-    adlist = dict()
+    adList = dict()
     total_node = set()
     for line in fr.readlines():
         edge = line.strip().split()
         if edge[0] not in total_node:   ##first appearance
             total_node.add(edge[0])
             key = int(edge[0])
-            adlist[key] = []
-            adlist[key].append(int(edge[0]))
-            adlist[key].append(int(edge[1]))
+            adList[key] = []
+            adList[key].append(int(edge[0]))
+            adList[key].append(int(edge[1]))
         else:
             key = int(edge[0])
-            adlist[key].append(int(edge[1]))  
+            adList[key].append(int(edge[1]))  
 
         if edge[1] not in total_node:   ##first appearance
             total_node.add(edge[1])
             key = int(edge[1])
-            adlist[key] = []
-            adlist[key].append(int(edge[1]))
-            adlist[key].append(int(edge[0]))
+            adList[key] = []
+            adList[key].append(int(edge[1]))
+            adList[key].append(int(edge[0]))
         else:
             key = int(edge[1])
-            adlist[key].append(int(edge[0]))  
+            adList[key].append(int(edge[0]))  
 
 
     edges = 0
-    for j in adlist.keys():
-        edges += (len(adlist[j])-1)
-    print "total nodes:", len(total_node),len(adlist.keys())
+    for j in adList.keys():
+        edges += (len(adList[j])-1)
+    print "total nodes:", len(total_node),len(adList.keys())
     print "total edges:",edges
-    pickle.dump(adlist,open(filename+'.p','wb'))
+    pickle.dump(adList,open(filename+'.p','wb'))
     
 
 if __name__ == '__main__':

@@ -4,10 +4,10 @@ from collections import deque
 def bfs():
     filename = 'com-dblp.ungraph'
 
-    adlist = pickle.load(open(filename+'.p','rb'))
-    print type(adlist)#,adlis.readline()
-    print adlist[3],adlist[35]
-    print "total nodes:",len(adlist.keys())
+    adList = pickle.load(open(filename+'.p','rb'))
+    print type(adList)#,adlis.readline()
+    print adList[3],adList[35]
+    print "total nodes:",len(adList.keys())
 
     print "bfsing"
     #bfs
@@ -23,13 +23,13 @@ def bfs():
             visited.add(curNode)
         else:
             pass
-        if curNode not in adlist:       ##may have no neighbors   NOT NECESSARY
+        if curNode not in adList:       ##may have no neighbors   NOT NECESSARY
             pass
         else:
-            curNeighbor = adlist[curNode]   ##all neighbors
-            del adlist[curNode]             ##delete from adlist
+            curNeighbor = adList[curNode]   ##all neighbors
+            del adList[curNode]             ##delete from adList
             for i in curNeighbor:           ##enqueue all neighbors
-                if i in adlist:
+                if i in adList:
                     q.append(i)
 
     print len(bfsOrder),len(visited)    ##test

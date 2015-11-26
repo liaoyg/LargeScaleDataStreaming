@@ -1,23 +1,65 @@
 import cPickle as pickle
-from collections import deque
 
 def Balanced():
     k = 8       ##number of machines
     filename = 'com-dblp.ungraph'
     order = 'bfs'
 
-    adlist = pickle.load(open(filename+'.p','rb'))
+    adList = pickle.load(open(filename+'.p','rb'))
     Stream = pickle.load(open(filename+'_'+order+'.p','rb'))
-    print type(adlist),type(Stream)
-    print adlist[3],adlist[35]
-    print "total nodes:",len(adlist.keys()),len(Stream)
+    print type(adList),type(Stream)
+    print adList[3],adList[35]
+    print "total nodes:",len(adList.keys()),len(Stream)
 
     print "Partition"
 
     Cap = len(Stream)/k     ##Capacity of each machine
-    
+    cutEdges = 0            ##number of edges being cut
+    Machines = []           ##List of machines
+    Machine = set()         ##Single machine
+    for i in xrange(k):             ##init k sets
+        Machine = set()         ##Single machine
+        Machines.append(Machine)
 
 
+    for curNode in Stream:
+        ##find minSize Machine(s)
+        minSizeList = []
+        for i in xrange(k):
+            if len(minSizeList) == 0:
+                minSizeList.append(i)
+                minSize = len(Machines[i])
+                continue
+            if len(Machines[i]) > minSize:
+                continue
+            elif len(Machines[i]) == minSize:
+                minSizeList.append(i)
+            elif len(Machines[i]) < minSize:    ##curMachine size is less than all previous machines, clear list, reset minSize
+                minSizeList = []
+                minSizeList.append(i)
+                minSize = len(Machines[i])
+
+        ##Select Machine to put curNode
+        if len(minSizeList) == 1:           ##only one mininum size machine, add to that machine
+            Machines[minSizeList[0]].add(curNode)
+        ##TODO Random pick and change curSelectedMach 
+        else:                               ##More than one machines has minimum size, Randomly pick one
+            Machines[minSizeList[0]].add(curNode)
+        curSelectedMach = minSizeList[0]
+        #print curSelectedMach
+        ##Calculate cutEdges
+        curNeighbors = adList[curNode]
+        del adList[curNode]
+        for Neighbor in curNeighbors:
+            if Neighbor == curNode:          ##Skip first node
+                continue
+            for i in xrange(k):
+                if Neighbor in Machines[i] and i != curSelectedMach:     ##Neighbor was in a machine but not same as curNode
+                    cutEdges += 1
+                else:
+                    continue
+
+    print cutEdges
 
 
 if __name__ == '__main__':
