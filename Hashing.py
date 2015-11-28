@@ -1,7 +1,7 @@
 import cPickle as pickle
 
 def Hashing():
-    k = 8       ##number of machines
+    k = 9       ##number of machines
     filename = 'com-dblp.ungraph'
     order = 'bfs'
 
