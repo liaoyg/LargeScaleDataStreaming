@@ -13,13 +13,13 @@ def Chunking():
 
     print "Partition"
 
-    Cap = len(Stream)/k + 1 ##Capacity of each machine
+    Cap = len(Stream)/k + 1     ##Capacity of each machine
     curCap = 0
-    curSelectedMach = 0     ##init the default selected machine number
-    cutEdges = 0            ##number of edges being cut
-    Machines = []           ##List of machines
-    Machine = set()         ##Single machine
-    for i in xrange(k):             ##init k sets
+    curSelectedMach = 0         ##init the default selected machine number
+    cutEdges = 0                ##number of edges being cut
+    Machines = []               ##List of machines
+    Machine = set()             ##Single machine
+    for i in xrange(k):         ##init k sets
         Machine = set()         ##Single machine
         Machines.append(Machine)
 

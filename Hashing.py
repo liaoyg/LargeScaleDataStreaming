@@ -1,7 +1,7 @@
 import cPickle as pickle
 
 def Hashing():
-    k = 9       ##number of machines
+    k = 8       ##number of machines
     filename = 'com-dblp.ungraph'
     order = 'bfs'
 
@@ -13,12 +13,12 @@ def Hashing():
 
     print "Partition"
 
-    Cap = len(Stream)/k + 1 ##Capacity of each machine
-    curSelectedMach = 0     ##init the default selected machine number
-    cutEdges = 0            ##number of edges being cut
-    Machines = []           ##List of machines
-    Machine = set()         ##Single machine
-    for i in xrange(k):             ##init k sets
+    Cap = len(Stream)/k + 1     ##Capacity of each machine
+    curSelectedMach = 0         ##init the default selected machine number
+    cutEdges = 0                ##number of edges being cut
+    Machines = []               ##List of machines
+    Machine = set()             ##Single machine
+    for i in xrange(k):         ##init k sets
         Machine = set()         ##Single machine
         Machines.append(Machine)
 
@@ -29,7 +29,6 @@ def Hashing():
         curSelectedMach = curNode % k
         Machines[curSelectedMach].add(curNode)
 
-        #print curSelectedMach
         ##Calculate cutEdges
         curNeighbors = adList[curNode]
         del adList[curNode]

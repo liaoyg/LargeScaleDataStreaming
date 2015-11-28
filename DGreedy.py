@@ -1,5 +1,6 @@
 import cPickle as pickle
 from math import *
+from random import *
 def DGreedy():
     k = 8       ##number of machines
     filename = 'com-dblp.ungraph'
@@ -13,12 +14,12 @@ def DGreedy():
 
     print "Partition"
 
-    Cap = len(Stream)/k + 1 ##Capacity of each machine
-    curSelectedMach = 0     ##init the default selected machine number
-    cutEdges = 0            ##number of edges being cut
-    Machines = []           ##List of machines
-    Machine = set()         ##Single machine
-    for i in xrange(k):             ##init k sets
+    Cap = len(Stream)/k + 1     ##Capacity of each machine
+    curSelectedMach = 0         ##init the default selected machine number
+    cutEdges = 0                ##number of edges being cut
+    Machines = []               ##List of machines
+    Machine = set()             ##Single machine
+    for i in xrange(k):         ##init k sets
         Machine = set()         ##Single machine
         Machines.append(Machine)
 
@@ -37,9 +38,8 @@ def DGreedy():
                 else:
                     continue
 
-
-
         ##Penalize larger partitions
+        ##3 different ways to penalize
         for i in xrange(len(mostEdgeMach)):
             #mostEdgeMach[i] = mostEdgeMach[i]
             mostEdgeMach[i] = mostEdgeMach[i] * (1 - (len(Machines[i]))/Cap)
@@ -48,22 +48,20 @@ def DGreedy():
 
         #Argmax
         candidateMachList = [i for i,j in enumerate(mostEdgeMach) if j == max(mostEdgeMach)]
-        if len(candidateMachList) == 1:           ##only one maximum edge machine, add to that machine
-            Machines[candidateMachList[0]].add(curNode)
-        ##TODO Random pick and change curSelectedMach 
-        else:                               ##More than one machines has maximum edge, Randomly pick one
-            Machines[candidateMachList[0]].add(curNode)
-        curSelectedMach = candidateMachList[0]
-        #print curSelectedMach
+        if len(candidateMachList) == 1:                                 ##only one maximum edge machine, add to that machine
+            curSelectedMach = candidateMachList[0]
+            Machines[curSelectedMach].add(curNode)
+        else:                                                           ##More than one machines has maximum edge, Randomly pick one
+            randInd = randint(0,len(candidateMachList)-1)               ##Random pick one if ties
+            curSelectedMach = randInd
+            Machines[curSelectedMach].add(curNode)
 
         ##Calculate cutEdges
-        #curNeighbors = adList[curNode]
-        #del adList[curNode]
         for Neighbor in curNeighbors:
             if Neighbor == curNode:          ##Skip first node
                 continue
             for i in xrange(k):
-                if Neighbor in Machines[i] and i != curSelectedMach:     ##Neighbor was in a machine but not same as curNode
+                if Neighbor in Machines[i] and i != curSelectedMach:    ##Neighbor was in a machine but not same as curNode
                     cutEdges += 1
                 else:
                     continue
