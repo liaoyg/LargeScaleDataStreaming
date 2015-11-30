@@ -2,7 +2,7 @@ import cPickle as pickle
 from collections import deque
 
 def bfs():
-    filename = 'com-dblp.ungraph'
+    filename = 'Email-Enron'
 
     adList = pickle.load(open(filename+'.p','rb'))
     print type(adList)#,adlis.readline()
@@ -31,6 +31,10 @@ def bfs():
             for i in curNeighbor:           ##enqueue all neighbors
                 if i in adList:
                     q.append(i)
+        if len(q) == 0:
+            if len(adList.keys()) != 0:
+                key = adList.keys()
+                q.append(key[0])
 
     print len(bfsOrder),len(visited)    ##test
     pickle.dump(bfsOrder,open(filename+'_bfs'+'.p','wb'))
