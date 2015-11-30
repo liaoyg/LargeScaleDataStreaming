@@ -69,7 +69,7 @@ def Triangles():
             #EdgesinEachSet[i] = EdgesinEachSet[i]
             EdgesinEachSet[i] = EdgesinEachSet[i] * (1 - (len(Machines[i]))/Cap)
             ##TODO FIX EXP
-            #EdgesinEachSet[i] = EdgesinEachSet[i] * (1 - exp(len(Machines[i])-Cap))
+            EdgesinEachSet[i] = EdgesinEachSet[i] * (1 - exp(len(Machines[i])-Cap))
 
 
         #Argmax
