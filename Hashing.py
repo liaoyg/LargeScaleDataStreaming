@@ -44,6 +44,11 @@ def Hashing():
                     continue
 
     print cutEdges
+    total = 0
+    for i in xrange(k):
+        total += len(Machines[i])
+        print i,len(Machines[i])
+    print total
 
 
 if __name__ == '__main__':

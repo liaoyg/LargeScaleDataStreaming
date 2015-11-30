@@ -4,8 +4,8 @@ from random import *
 def DGreedy():
     k = 8       ##number of machines
     filename = 'com-dblp.ungraph'
-    order = 'bfs'
-    #order = 'dfs'
+    #order = 'bfs'
+    order = 'dfs'
     #order = 'rand'
 
     adList = pickle.load(open(filename+'.p','rb'))
@@ -69,6 +69,11 @@ def DGreedy():
                     continue
 
     print cutEdges
+    total = 0
+    for i in xrange(k):
+        total += len(Machines[i])
+        print i,len(Machines[i])
+    print total
 
 
 if __name__ == '__main__':
