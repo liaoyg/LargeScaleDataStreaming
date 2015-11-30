@@ -28,7 +28,7 @@ def Hashing():
     for curNode in Stream:
         ##Use hash to find machine
         ##TODO HASH FUN need to change
-        curSelectedMach = curNode % k
+        curSelectedMach = (curNode+k/3) % k
         Machines[curSelectedMach].add(curNode)
 
         ##Calculate cutEdges
