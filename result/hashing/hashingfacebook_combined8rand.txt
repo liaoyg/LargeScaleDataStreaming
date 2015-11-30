@@ -1,0 +1,12 @@
+==============hashing streaming================
+file:facebook_combined,k size:8,order:rand
+cut edges num: 77379
+0, 505
+1, 504
+2, 505
+3, 505
+4, 505
+5, 505
+6, 505
+7, 505
+total node: 4039

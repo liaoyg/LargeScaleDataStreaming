@@ -1,0 +1,9 @@
+==============determinisitic_greedy streaming================
+file:facebook_combined,k size:4,order:dfs
+total nodes: 4039
+cut edges num: 26031
+0, 1082
+1, 1077
+2, 808
+3, 1072
+total node: 4039

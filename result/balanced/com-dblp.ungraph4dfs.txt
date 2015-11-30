@@ -1,0 +1,9 @@
+==============balanced streaming================
+file:com-dblp.ungraph,k size:4,order:dfs
+total nodes: 317080
+cut edges num: 845322
+0, 79270
+1, 79270
+2, 79270
+3, 79270
+total node: 317080

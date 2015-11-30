@@ -1,0 +1,13 @@
+==============chunking streaming================
+file:facebook_combined,k size:8,order:dfs
+total nodes: 4039
+cut edges num: 49397
+0, 505
+1, 506
+2, 506
+3, 506
+4, 506
+5, 506
+6, 506
+7, 498
+total node: 4039

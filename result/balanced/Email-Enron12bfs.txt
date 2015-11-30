@@ -1,0 +1,17 @@
+==============balanced streaming================
+file:Email-Enron,k size:12,order:bfs
+total nodes: 36692
+cut edges num: 339014
+0, 3058
+1, 3058
+2, 3058
+3, 3058
+4, 3058
+5, 3057
+6, 3058
+7, 3057
+8, 3057
+9, 3058
+10, 3057
+11, 3058
+total node: 36692

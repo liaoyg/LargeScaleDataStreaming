@@ -1,0 +1,17 @@
+==============triangles streaming================
+file:com-dblp.ungraph,k size:12,order:dfs
+total nodes: 317080
+cut edges num: 819408
+0, 29677
+1, 29556
+2, 26356
+3, 25709
+4, 25789
+5, 25065
+6, 25699
+7, 25509
+8, 26128
+9, 25808
+10, 26039
+11, 25745
+total node: 317080

@@ -1,0 +1,12 @@
+==============hashing streaming================
+file:Email-Enron,k size:8,order:rand
+cut edges num: 325504
+0, 4586
+1, 4586
+2, 4587
+3, 4587
+4, 4587
+5, 4587
+6, 4586
+7, 4586
+total node: 36692

@@ -1,0 +1,13 @@
+==============determinisitic_greedy streaming================
+file:Email-Enron,k size:8,order:rand
+total nodes: 36692
+cut edges num: 228356
+0, 5670
+1, 6165
+2, 4059
+3, 3312
+4, 4829
+5, 3623
+6, 4809
+7, 4225
+total node: 36692

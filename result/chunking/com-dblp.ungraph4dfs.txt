@@ -1,0 +1,9 @@
+==============chunking streaming================
+file:com-dblp.ungraph,k size:4,order:dfs
+total nodes: 317080
+cut edges num: 357708
+0, 79271
+1, 79272
+2, 79272
+3, 79265
+total node: 317080

@@ -1,0 +1,9 @@
+==============triangles streaming================
+file:Email-Enron,k size:4,order:dfs
+total nodes: 36692
+cut edges num: 271148
+0, 8409
+1, 8375
+2, 8482
+3, 8430
+total node: 33696

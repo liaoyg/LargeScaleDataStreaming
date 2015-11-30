@@ -1,0 +1,9 @@
+==============balanced streaming================
+file:facebook_combined,k size:4,order:bfs
+total nodes: 4039
+cut edges num: 66350
+0, 1010
+1, 1010
+2, 1009
+3, 1010
+total node: 4039

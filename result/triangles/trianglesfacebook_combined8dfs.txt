@@ -1,0 +1,13 @@
+==============triangles streaming================
+file:facebook_combined,k size:8,order:dfs
+total nodes: 4039
+cut edges num: 75760
+0, 727
+1, 609
+2, 408
+3, 492
+4, 522
+5, 368
+6, 439
+7, 474
+total node: 4039

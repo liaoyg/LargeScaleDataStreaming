@@ -1,0 +1,16 @@
+==============hashing streaming================
+file:facebook_combined,k size:12,order:dfs
+cut edges num: 80975
+0, 336
+1, 336
+2, 336
+3, 336
+4, 337
+5, 337
+6, 337
+7, 337
+8, 337
+9, 337
+10, 337
+11, 336
+total node: 4039

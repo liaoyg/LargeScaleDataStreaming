@@ -1,0 +1,8 @@
+==============hashing streaming================
+file:com-dblp.ungraph,k size:4,order:rand
+cut edges num: 809907
+0, 79338
+1, 79218
+2, 79270
+3, 79254
+total node: 317080

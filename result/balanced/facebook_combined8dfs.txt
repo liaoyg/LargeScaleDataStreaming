@@ -1,0 +1,13 @@
+==============balanced streaming================
+file:facebook_combined,k size:8,order:dfs
+total nodes: 4039
+cut edges num: 77889
+0, 505
+1, 505
+2, 504
+3, 505
+4, 505
+5, 505
+6, 505
+7, 505
+total node: 4039

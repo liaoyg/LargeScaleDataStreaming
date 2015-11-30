@@ -1,0 +1,8 @@
+==============hashing streaming================
+file:Email-Enron,k size:4,order:dfs
+cut edges num: 275980
+0, 8429
+1, 8429
+2, 8424
+3, 8414
+total node: 33696

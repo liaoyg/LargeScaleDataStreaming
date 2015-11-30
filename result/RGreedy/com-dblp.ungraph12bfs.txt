@@ -1,0 +1,17 @@
+==============random greedy streaming================
+file:com-dblp.ungraph,k size:12,order:bfs
+total nodes: 317080
+cut edges num: 396626
+0, 25922
+1, 26700
+2, 24943
+3, 27073
+4, 26456
+5, 27118
+6, 26794
+7, 26361
+8, 25156
+9, 29204
+10, 24442
+11, 26911
+total node: 317080

@@ -1,0 +1,9 @@
+==============chunking streaming================
+file:facebook_combined,k size:4,order:rand
+total nodes: 4039
+cut edges num: 66217
+0, 1010
+1, 1011
+2, 1011
+3, 1007
+total node: 4039

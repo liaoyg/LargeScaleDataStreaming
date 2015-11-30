@@ -1,0 +1,13 @@
+==============determinisitic_greedy streaming================
+file:com-dblp.ungraph,k size:8,order:rand
+total nodes: 317080
+cut edges num: 529241
+0, 49270
+1, 50183
+2, 40478
+3, 36314
+4, 36003
+5, 35183
+6, 34313
+7, 35336
+total node: 317080

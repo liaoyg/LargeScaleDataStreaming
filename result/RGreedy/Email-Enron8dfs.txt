@@ -1,0 +1,13 @@
+==============random greedy streaming================
+file:Email-Enron,k size:8,order:dfs
+total nodes: 36692
+cut edges num: 221564
+0, 2629
+1, 5772
+2, 2692
+3, 2653
+4, 5789
+5, 5806
+6, 2583
+7, 5772
+total node: 33696

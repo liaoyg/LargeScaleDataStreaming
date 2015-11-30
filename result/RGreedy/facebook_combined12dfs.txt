@@ -1,0 +1,17 @@
+==============random greedy streaming================
+file:facebook_combined,k size:12,order:dfs
+total nodes: 4039
+cut edges num: 55014
+0, 372
+1, 308
+2, 360
+3, 350
+4, 358
+5, 359
+6, 358
+7, 359
+8, 129
+9, 361
+10, 364
+11, 361
+total node: 4039

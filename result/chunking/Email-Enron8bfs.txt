@@ -1,0 +1,13 @@
+==============chunking streaming================
+file:Email-Enron,k size:8,order:bfs
+total nodes: 36692
+cut edges num: 184536
+0, 4587
+1, 4588
+2, 4588
+3, 4588
+4, 4588
+5, 4588
+6, 4588
+7, 4577
+total node: 36692
