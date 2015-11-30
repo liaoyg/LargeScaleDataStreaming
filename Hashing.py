@@ -4,9 +4,9 @@ def Hashing():
     k = 8       ##number of machines
     filename = 'com-dblp.ungraph'
     order = 'bfs'
-    order = 'dfs'
-    order = 'rand'
-    
+    #order = 'dfs'
+    #order = 'rand'
+
     adList = pickle.load(open(filename+'.p','rb'))
     Stream = pickle.load(open(filename+'_'+order+'.p','rb'))
     print type(adList),type(Stream)
