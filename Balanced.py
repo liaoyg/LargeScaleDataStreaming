@@ -48,7 +48,7 @@ def Balanced():
             Machines[curSelectedMach].add(curNode)
         else:                                               ##More than one machines has minimum size, Randomly pick one
             randInd = randint(0,len(minSizeList)-1)         ##Random pick one if ties
-            curSelectedMach = randInd
+            curSelectedMach = minSizeList[randInd]
             Machines[curSelectedMach].add(curNode)
         #print curSelectedMach
         ##Calculate cutEdges
