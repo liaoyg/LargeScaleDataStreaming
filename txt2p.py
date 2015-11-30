@@ -47,7 +47,7 @@ def txt2p():
     for j in adList.keys():
         edges += (len(adList[j])-1)
     print "total nodes:", len(total_node),len(adList.keys())
-    print "total edges:",edges
+    print "total edges:",edges/2
     pickle.dump(adList,open(filename+'.p','wb'))
     
 
