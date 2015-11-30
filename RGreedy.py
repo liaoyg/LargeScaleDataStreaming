@@ -3,10 +3,12 @@ from math import *
 from random import *
 
 def random_pick_odd(some_list, odds):  
-    print 'random pick'  
+    #print 'random pick'  
     table = [z for x,y in zip(some_list,odds) for z in [x] * y]   
-    print table  
-    return random.choice(table) 
+    #print table  
+    if len(table) == 0:
+        return choice(some_list)
+    return choice(table) 
 
 def RGreedy():
     k = 8       ##number of machines
@@ -46,11 +48,11 @@ def RGreedy():
                 
         ##Penalize larger partitions
         ##3 different ways to penalize
-        normalContant = 0;
+        normalConstant = 0;
         for i in xrange(len(mostEdgeMach)):
             #mostEdgeMach[i] = mostEdgeMach[i]
             mostEdgeMach[i] = mostEdgeMach[i] * (1 - (len(Machines[i]))/Cap)
-            normalContant += mostEdgeMach[i]
+            normalConstant += mostEdgeMach[i]
             ##TODO FIX EXP
             #mostEdgeMach[i] = mostEdgeMach[i] * (1 - exp(len(Machines[i])-Cap))
         
@@ -70,8 +72,13 @@ def RGreedy():
                     continue
                 
     print cutEdges
+    total = 0
+    for i in xrange(k):
+        total += len(Machines[i])
+        print i,len(Machines[i])
+    print total
     
-    if __name__ == '__main__':
-        RGreedy()
+if __name__ == '__main__':
+    RGreedy()
         
         
