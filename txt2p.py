@@ -1,8 +1,9 @@
+# Filename: txt2p.py
 import cPickle as pickle
 from collections import deque
 
-def txt2p():
-    filename = 'com-dblp.ungraph'
+def txt2p(name):
+    filename = name
     #open file
     fr = open((filename+".txt"))
 

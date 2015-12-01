@@ -10,16 +10,24 @@ def random_pick_odd(some_list, odds):
         return choice(some_list)
     return choice(table) 
 
-def RGreedy():
-    k = 8       ##number of machines
-    filename = 'com-dblp.ungraph'
-    order = 'bfs'
+def RGreedy(name, k, order):
+    #k = 8       ##number of machines
+    filename = name
+    #order = 'bfs'
+    #order = 'dfs'
+    #order = 'rand'
+    print "======Random Greedy Streaming======="
+    print "file:",name,"k size: ",k,"order: ",order
+    f = file('result/RGreedy/'+filename+str(k)+order+'.txt','w+')
+    f.write("==============random greedy streaming================\n")
+    print >>f, "file:%s,k size:%d,order:%s" % (name,k,order)
 
     adList = pickle.load(open(filename+'.p','rb'))
     Stream = pickle.load(open(filename+'_'+order+'.p','rb'))
     print type(adList),type(Stream)
     print adList[3],adList[35]
     print "total nodes:",len(adList.keys()),len(Stream)
+    print >>f,"total nodes: %d" % len(adList.keys())
     
     print "Partition"
     
@@ -72,11 +80,17 @@ def RGreedy():
                     continue
                 
     print cutEdges
+    print >>f,"cut edges num: %d" % cutEdges
     total = 0
     for i in xrange(k):
         total += len(Machines[i])
         print i,len(Machines[i])
+        print >>f,"%d, %d" % (i,len(Machines[i]))
+    print >>f,"total node: %d" % total
     print total
+    return cutEdges
+
+    f.close()
     
 if __name__ == '__main__':
     RGreedy()

@@ -1,11 +1,16 @@
 import cPickle as pickle
 
-def Hashing():
-    k = 8       ##number of machines
-    filename = 'com-dblp.ungraph'
-    order = 'bfs'
+def Hashing(name, k, order):
+    #k = 8       ##number of machines
+    filename = name
+    #order = 'bfs'
     #order = 'dfs'
     #order = 'rand'
+    print "======Hashing Streaming======="
+    print "file:",name,"k size: ",k,"order: ",order
+    f = file('result/hashing'+filename+str(k)+order+'.txt','w+')
+    f.write("==============hashing streaming================\n")
+    print >>f, "file:%s,k size:%d,order:%s" % (name,k,order)
 
     adList = pickle.load(open(filename+'.p','rb'))
     Stream = pickle.load(open(filename+'_'+order+'.p','rb'))
@@ -44,11 +49,17 @@ def Hashing():
                     continue
 
     print cutEdges
+    print >>f,"cut edges num: %d" % cutEdges
     total = 0
     for i in xrange(k):
         total += len(Machines[i])
         print i,len(Machines[i])
+        print >>f,"%d, %d" % (i,len(Machines[i]))
+    print >>f,"total node: %d" % total
     print total
+    return cutEdges
+
+    f.close()
 
 
 if __name__ == '__main__':

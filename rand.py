@@ -1,7 +1,7 @@
 import cPickle as pickle
 from random import *
-def Rand():
-    filename = 'com-dblp.ungraph'
+def Rand(name):
+    filename = name
 
     adList = pickle.load(open(filename+'.p','rb'))
     print type(adList)#,adlis.readline()
@@ -19,4 +19,4 @@ def Rand():
 
 
 if __name__ == '__main__':
-    Rand()
+   Rand()

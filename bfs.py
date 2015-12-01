@@ -1,8 +1,8 @@
 import cPickle as pickle
 from collections import deque
 
-def bfs():
-    filename = 'Email-Enron'
+def bfs(name):
+    filename = name
 
     adList = pickle.load(open(filename+'.p','rb'))
     print type(adList)#,adlis.readline()

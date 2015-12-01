@@ -1,7 +1,7 @@
 import cPickle as pickle
 
-def dfs():
-    filename = 'com-dblp.ungraph'
+def dfs(name):
+    filename = name
 
     adList = pickle.load(open(filename+'.p','rb'))
     print type(adList)#,adlis.readline()

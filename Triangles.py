@@ -3,18 +3,24 @@ from math import *
 from random import *
 import scipy.misc
 
-def Triangles():
-    k = 8       ##number of machines
-    filename = 'com-dblp.ungraph'
-    order = 'bfs'
+def Triangles(name, k, order):
+    #k = 8       ##number of machines
+    filename = name
+    #order = 'bfs'
     #order = 'dfs'
     #order = 'rand'
+    print "======Triangles Streaming======="
+    print "file:",name,"k size: ",k,"order: ",order
+    f = file('result/triangles'+filename+str(k)+order+'.txt','w+')
+    f.write("==============triangles streaming================\n")
+    print >>f, "file:%s,k size:%d,order:%s" % (name,k,order)
 
     adList = pickle.load(open(filename+'.p','rb'))
     Stream = pickle.load(open(filename+'_'+order+'.p','rb'))
     print type(adList),type(Stream)
     print adList[3],adList[35]
     print "total nodes:",len(adList.keys()),len(Stream)
+    print >>f,"total nodes: %d" % len(adList.keys())
 
     print "Partition"
 
@@ -69,7 +75,7 @@ def Triangles():
             #EdgesinEachSet[i] = EdgesinEachSet[i]
             EdgesinEachSet[i] = EdgesinEachSet[i] * (1 - (len(Machines[i]))/Cap)
             ##TODO FIX EXP
-            EdgesinEachSet[i] = EdgesinEachSet[i] * (1 - exp(len(Machines[i])-Cap))
+            #EdgesinEachSet[i] = EdgesinEachSet[i] * (1 - exp(len(Machines[i])-Cap))
 
 
         #Argmax
@@ -95,11 +101,16 @@ def Triangles():
                     continue
 
     print cutEdges
+    print >>f,"cut edges num: %d" % cutEdges
     total = 0
     for i in xrange(k):
         total += len(Machines[i])
         print i,len(Machines[i])
+        print >>f,"%d, %d" % (i,len(Machines[i]))
+    print >>f,"total node: %d" % total
     print total
+    return cutEdges
+    f.close()
 
 
 if __name__ == '__main__':

@@ -1,17 +1,23 @@
 import cPickle as pickle
 from random import *
-def Balanced():
-    k = 8       ##number of machines
-    filename = 'com-dblp.ungraph'
-    order = 'bfs'
+def Balanced(name, k, order):
+    #k = 8       ##number of machines
+    filename = name
+    #order = 'bfs'
     #order = 'dfs'
     #order = 'rand'
+    print "======Balanced Streaming======="
+    print "file:",name,"k size: ",k,"order: ",order
+    f = file('result/balanced/'+filename+str(k)+order+'.txt','w+')
+    #f = file('balanced'+'.txt','w+')
+    f.write("==============balanced streaming================\n")
+    print >>f, "file:%s,k size:%d,order:%s" % (name,k,order)
 
     adList = pickle.load(open(filename+'.p','rb'))
     Stream = pickle.load(open(filename+'_'+order+'.p','rb'))
     print type(adList),type(Stream)
     print adList[3],adList[35]
-    print "total nodes:",len(adList.keys()),len(Stream)
+    print >>f,"total nodes: %d" % len(adList.keys())
 
     print "Partition"
 
@@ -63,13 +69,14 @@ def Balanced():
                 else:
                     continue
 
-    print cutEdges
+    print >>f,"cut edges num: %d" % cutEdges
     total = 0
     for i in xrange(k):
         total += len(Machines[i])
-        print i,len(Machines[i])
-    print total
-
+        print >>f,"%d, %d" % (i,len(Machines[i]))
+    print >>f,"total node: %d" % total
+    return cutEdges
+    f.close()
 
 if __name__ == '__main__':
     Balanced()
