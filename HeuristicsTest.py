@@ -12,16 +12,16 @@ import RGreedy
 import Triangles
 
 def test():
-    datasetfile = ['com-dblp.ungraph', 'Email-Enron', 'facebook_combined']
+    datasetfile = ['Email-Enron']#['com-dblp.ungraph', 'Email-Enron', 'facebook_combined']
     order = ['bfs', 'dfs', 'rand']
     ksize = [4,8,12]
     ba,ch,dg,ha,rg,tr=[],[],[],[],[],[]
     Edges_constant = [1049866,367662,88234]  #edges of each datasets
-    #for dataname in datasetfile:
-        #txt2p.txt2p(dataname)
-        #rand.Rand(dataname)
-        #dfs.dfs(dataname)
-        #bfs.bfs(dataname)
+    for dataname in datasetfile:
+        txt2p.txt2p(dataname)
+        rand.Rand(dataname)
+        dfs.dfs(dataname)
+        bfs.bfs(dataname)
     for dataname in datasetfile:
         for od in order:
             for k in ksize:

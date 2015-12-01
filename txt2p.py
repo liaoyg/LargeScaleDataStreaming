@@ -29,9 +29,10 @@ def txt2p(name):
             adList[key] = []
             adList[key].append(int(edge[0]))
             adList[key].append(int(edge[1]))
-        else:
+        else:#if edge[1] not in total_node:
             key = int(edge[0])
-            adList[key].append(int(edge[1]))  
+            if int(edge[1]) not in adList[key]:
+                adList[key].append(int(edge[1]))  
 
         if edge[1] not in total_node:   ##first appearance
             total_node.add(edge[1])
@@ -39,9 +40,10 @@ def txt2p(name):
             adList[key] = []
             adList[key].append(int(edge[1]))
             adList[key].append(int(edge[0]))
-        else:
+        else:#if edge[0] not in total_node:
             key = int(edge[1])
-            adList[key].append(int(edge[0]))  
+            if int(edge[0]) not in adList[key]:
+                adList[key].append(int(edge[0]))  
 
 
     edges = 0
