@@ -1,0 +1,101 @@
+% Header
+\documentclass[12pt]{article}
+% Includes
+\usepackage{fullpage}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{color}
+
+% Page formatting
+\parindent 0pt
+\parskip 2ex
+
+% Customization 
+\newcommand{\e}{{\epsilon}}
+\newcommand{\F}{\mathbb {F}}
+\renewcommand{\S}{{\mathcal{S}}}
+\newcommand{\acomment}[1]{\textit{\color{red}#1}}
+% Customization of environments - specially formatted areas
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newenvironment{definition}{\\[2ex] {\bf Definition:} }{\\[1ex]}
+\newenvironment{note}{\\[2ex] {\bf Note:} }{\\[1ex]}
+
+
+\begin {document}
+
+% Very simple page title; use the "title" environment for fancier stuff
+\begin {center}
+{\large  Simulation of Streaming Graph Partitioning} \\
+Yangguang Liao, Siqi Wu, Liwei Wu \\
+UC Davis\\
+November 2015
+\end {center}
+
+\textbf{1 Introduction}
+
+With the scaling up of the system, big graph has to be cut into several pieces and then loaded into several clusters. Existing graph partitioning algorithm usually have very large cost, may be as large as future computation cost. However, since the graph need to be loaded into clusters anyway, we simulate the streaming graph partitioning, i.e. partitioning the graph at the same when the graph is loading into clusters. 
+
+\textbf{2 Related work}
+
+There are a lot of related research in this topic. The most famous one, which is regarded as NP-Hard, is to cut a graph into k balanced parts, while minimize the number of edges being cut. Stanton and Kliot discuss several partition methods, and streaming orders of the graph, and their model is proved better than the partitioning method used in Spark.
+
+\textbf{3 Methodology}
+1 heuiristic
+	1-9 chuiable
+
+2 streaming order
+
+implementation
+	why python or library usage
+	datastructure
+	dfs bfs algorithm
+
+The algorithm is intuitive, vertices are coming in a stream, and several different methods were provided, like Balanced, Randomized Greedy, greedy EvoCut, to determine where should we put the new node. The streaming order like BFS, DFS or random is also considered here. In this way, we could partition the graph into several pieces when loading it into clusters. We simulate the combinations of dataset, streaming order and heuristics on our own offline system to evaluate their performance.
+
+Different streaming strategy and ordering could fit different dataset type. Our experiment is trying to find the most reasonable heuristic for specific graph type. To find out relationship between computation performance and scaling size, data features and graph properties.
+
+\textbf{Experiment}
+dataset description
+simulation
+	pre processing
+	format transformation
+	streaming simulation
+
+\textsc{Dataset type}\\
+The datasets are chosen from the paper and online data library SNAP. The data size would be small? since we are expected to using offline system to simulate the heuristics implementation. For each dataset, we will record its scaling size, data feature and graph properties.\\
+\textsc{Evaluation method}\\
+We will simulate each heuristic with 3 different ordering strategies on all the datasets 5 times, which could reveal an average performance for each combination.\\
+\textsc{Quality evaluation}\\
+We use following approach to evaluate heuristics quality:\\
+1. Upper bound: RANDOM HASHING and lower bound METIS.\\
+2. Time cost improvement.\\
+3. Fraction of edges cut.\\
+4. Real system implementation.\\
+5. Page ranking implementation in spark.\\
+6. Page ranking in offline system with small size data.\\
+
+\textbf{Conclusion}
+ result table
+ analysis graph
+ 	which heuristics applied better in specific data type, why
+	different order of streaming for different data set
+	.....
+verify original paper
+our assumption
+
+\textbf{Future work}
+We would like to find the best performance heuristic for our specific graph type and algorithm, or we could find the difference of each heuristic when applying on various data type and algorithm.
+
+% Including the bibliography
+\bibliographystyle{unsrt}
+%\nocite{*}
+\bibliography{myBibliography}
+
+\end{document} 
+
+
+
+
