@@ -7,6 +7,15 @@
 \usepackage{amssymb}
 \usepackage{url}
 \usepackage{color}
+\usepackage{placeins}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{dsfont}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{multirow}
 
 % Page formatting
 \parindent 0pt
@@ -84,6 +93,78 @@ We use following approach to evaluate heuristics quality:\\
 6. Page ranking in offline system with small size data.\\
 
 \textbf{Conclusion}
+Recall that in the experiment, we examined all the combination of datasets, heuristics and streaming orders. Each of the six heuristic was run on the same ordering of the data and we repeat the experiment for different partitions: $k=4, k=8, k=12$. The performance of the heuristics is measured by the fraction of edges cut, a number between 0 and 1. To visualize the results, we summarize them in the following tables corresponding to different data sets. The first data set is the DBLP collaboration network data set. In the table below, the row names represent the six heuristics described before and the columns are first divided in three categories by the streaming orders and then further divided into three smaller categories by the partition numbers.  \\
+
+
+\begin{tabular}{llllllllll}
+\toprule 
+    DBLP & \multicolumn{3}{c}{BFS} & \multicolumn{3}{c}{DFS} & \multicolumn{3}{c}{Random}\\
+
+    & k=4 & k=8 & k=12
+    & k=4 & k=8 & k=12
+     & k=4 & k=8 & k=12  \\
+    \midrule
+    balance &    0.78 	& 0.89 	& 0.93 &	 0.81 &	 0.92 &	 0.95 &	 0.75 &	 0.87 &	 0.92   \\
+chunking&	 0.37 &	 0.51 &	 0.56 &	 0.34 &	 0.41 &	 0.43 &	 0.75 &	 0.88 &	 0.92 \\
+dgreedy&	 0.27 &	 0.38& 	 0.41 & 	 0.35 & 	 0.43 & 	 0.46 & 	 0.42 &  	 0.50 & 	 0.53 \\
+hashing&	 0.77 &	 0.89 & 	 0.93 & 	 0.77 & 	 0.89 & 	 0.93 & 	 0.77 & 	 0.89 & 	 0.93 \\
+rgreedy	& 0.26 &	 0.35 & 	 0.38 & 	 0.35 & 	 0.43 & 	 0.46 & 	 0.43 & 	 0.50 & 	 0.53 \\
+triangle	 &0.55 &	 0.67 & 	 0.72 & 	 0.60 & 	 0.73 & 	 0.78 & 	 0.66 & 	 0.78 & 	 0.83 \\
+    \bottomrule
+\end{tabular}
+\\
+\\
+
+Similarly, results for the other two data sets (Enron email network data set and Facebook friendship data set ) are summarized as below.\\
+
+\begin{tabular}{llllllllll}
+\toprule 
+    Email & \multicolumn{3}{c}{BFS} & \multicolumn{3}{c}{DFS} & \multicolumn{3}{c}{Random}\\
+
+    & k=4 & k=8 & k=12
+    & k=4 & k=8 & k=12
+     & k=4 & k=8 & k=12  \\
+    \midrule
+    balance &  0.76 &	 0.88 &	 0.92 &	 0.76 &	 0.88 &	 0.91 &	 0.75 &	 0.88 &	 0.92 \\
+chunking&	 0.35 &	 0.50 &	 0.59 &	 0.47 &	 0.61 &	 0.66 &	 0.75 &	 0.88 &	 0.92 \\
+dgreedy&	 0.28 &	 0.44 &	 0.51 &	 0.44 &	 0.60 &	 0.66 &	 0.55 &	 0.66 &	 0.69 \\
+hashing&	   0.77& 	 0.89 &	 0.92 &	 0.75 &	 0.87 &	 0.91 &	 0.77 &	 0.89 &	 0.92 \\
+rgreedy&	   0.29& 	 0.45 &	 0.53 &	 0.44 &	 0.60 &	 0.66 &	 0.59 &	 0.70 &	 0.74 \\
+triangle&	   0.68& 	 0.80 &	 0.83 &	 0.68 &	 0.80 &	 0.84 &	 0.71 &	 0.84 &	 0.88 \\
+    \bottomrule
+\end{tabular}
+
+\begin{tabular}{llllllllll}
+\toprule 
+    Facebook & \multicolumn{3}{c}{BFS} & \multicolumn{3}{c}{DFS} & \multicolumn{3}{c}{Random}\\
+
+    & k=4 & k=8 & k=12
+    & k=4 & k=8 & k=12
+     & k=4 & k=8 & k=12  \\
+    \midrule
+    balance &  0.75 & 0.88 	& 0.92 	& 0.76 	 &0.88 	& 0.92 	 &0.75 	& 0.88 	& 0.92       \\
+chunking&	  0.41 	& 0.49 &	 0.61 &	 0.29 &	 0.56 &	 0.62 &	 0.75 &	 0.88 &	 0.92 \\
+dgreedy&	  0.38 	& 0.31 &	 0.46 &	 0.30 &	 0.56 &	 0.63 &	 0.33 &	 0.55 &	 0.48  \\
+hashing&	    0.75 	& 0.88 &	 0.92 &	 0.75 &	 0.88 &	 0.92 &	 0.75 &	 0.88 &	 0.92 \\
+rgreedy&	    0.35 	& 0.50 &	 0.59 &	 0.29 &	 0.56 &	 0.62 &	 0.44 &	 0.63 &	 0.59 \\
+triangle&	    0.74 	& 0.86 &	 0.88 &	 0.74 &	 0.86 &	 0.88 &	 0.75 &	 0.86 &	 0.88  \\
+    \bottomrule
+\end{tabular}
+
+\newpage
+\FloatBarrier
+\begin{figure}
+\scalebox{0.25}{\includegraphics{Rplot11.JPEG}}
+\end{figure}
+\FloatBarrier
+In the graph Rplot11 above, we can compare the fraction of edges cut for combinations of six heuristics and three streaming orders for the DBLP collaboration network data with the partition size $k=4$. The smaller fraction of edges cut means a better performace of the algorithm.One can observe that using BFS leads to a substantial reduction of the fraction of edges cut for the dgreedy, rgreedy, and triangle heuristics. Even for the balance, chunking and hashing heuristics, using BFS performs almost as well as DFS or Random, i.e. the fraction of edges cut are not significantly larger than DFS or random. When we increase $k=4$ to $k=8$ and $k=12$, we find that the observation we had for $k=4$ still holds true. The question arises: does this phenomenon still hold even for different data sets? So we repeat the experiment for the other two data sets and the observation that BFS performs better than DFS and random across heuristics still holds true for these data sets. For the email data set, we find that using BFS leads to a substantial reduction of the fraction of edges cut for the dgreedy, rgreedy, and chunking heuristics. For the rest of the heuristics, the fraction of edges cut are more or less the same for BFS, DFS and random. For the facebook data set, we find that using BFS leads to a substantial reduction of the fraction of edges cut for the dgreedy, and chunking heuristics. For the rest of the heuristics, the fraction of edges cut are more or less the same for BFS, DFS and random. Therefore it suggests that we should use BFS all the time for whatever heuristics.  \\
+
+After determing that BFS is the most proper ordering to use, we still need to decide what heuristics works the best for a given data set. For the DBLP collaboration data set, we can see that dgreedy and rgreedy gives the best result for $k=4$ and for $k=8, 12$ the rgreedy performs slightly better than dgreedy. For the Email data set, it is also true that dgreedy and rgreedy gives the best result for $k=4$, and for $k=8, 12$ the dgreedy performs slightly better than rgreedy. For the Facebook data set, the dgreedy and rgreedy gives more or less same results for $k=4$ but dgreedy performs much better than rgreedy for $k=8, 12$. The difference are probably due to the large sample size of the Facebook data set. Obviously, we can only choose one out of dgreedy and rgreedy since all the other heuristics are not even comparable to these two in terms of performace. The dgreedy works better than rgreedy when the sample size is large, which is usually the case in practice. Therefore, overally speaking dgreedy seems to be a more reliable heuristic to use than rgreedy.\\
+
+Another observation we have is that when we increase $k$ value and keep everything else the same, the fraction of edges cut will increase no matter what heuristics and streaming orders are. But the relative advantage of BFS ordering and dgreedy/rgreedy is preserved. One can see clearly this from the line segment plot. \\
+
+In conclusion, we can safely conclude that the BFS and dgreedy are the most proper streaming order and heuristic to use in practice. 
+
  result table
  analysis graph
  	which heuristics applied better in specific data type, why
